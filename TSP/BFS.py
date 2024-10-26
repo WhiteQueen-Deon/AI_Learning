@@ -6,7 +6,6 @@ import tracemalloc
 import time
 
 def bfs(graph, start):
-    # 开始时间和内存跟踪
     start_time = time.time()
     tracemalloc.start()
 
@@ -31,13 +30,13 @@ def bfs(graph, start):
                 new_path.append(neighbor)
                 queue.append(new_path)
 
-    # 获取峰值内存消耗
+# memory consumption
     current, peak = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
-    # 获取结束时间
+# time consumption
     end_time = time.time()
-    time_cost = end_time - start_time  # 计算时间消耗
+    time_cost = end_time - start_time
 
     if all_paths:
         min_cost_path, min_cost = min(all_paths, key=lambda x: x[1])
