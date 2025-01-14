@@ -2,6 +2,27 @@ import tracemalloc
 import time
 import CityGraph
 
+# Advantages:
+# Guaranteed Optimal Solution: The algorithm systematically explores all possible
+# paths using DFS, ensuring that the globally optimal path with the minimum cost is found.
+
+# Explicit Stack Usage: By using an explicit stack instead of recursion, it avoids potential
+# stack overflow issues in deep recursion.
+
+# Simplicity: The implementation is straightforward and easy to understand, making it a good
+# starting point for solving the Traveling Salesman Problem (TSP).
+
+# Disadvantages:
+# High Time Complexity: The algorithm has a factorial time complexity O(n!),
+# as it explores all possible permutations of cities. This makes it impractical for large graphs.
+#
+# High Space Complexity: The stack and paths stored during the
+# search require significant memory, especially for larger graphs.
+#
+# Inefficient for Large Graphs: Due to its brute-force nature,
+# the algorithm cannot efficiently handle dense or large-scale graphs.
+
+
 def calculate_cost(path, graph):
     cost = 0
     for i in range(len(path) - 1):

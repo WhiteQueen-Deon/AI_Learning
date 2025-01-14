@@ -5,6 +5,14 @@ import math
 import tracemalloc
 import time
 
+# Advantages:
+# Shortest Path: Guarantees the shortest path in an unweighted graph when searching for a single solution.
+# Complete: Always finds a solution if one exists.
+# Optimal for Unweighted Graphs: Ensures optimality in terms of the number of edges traversed.
+# Disadvantages:
+# Memory-Intensive: Requires storing all nodes at the current level in the queue, which can consume a lot of memory for large graphs.
+# Slower for Deep Graphs: Inefficient for graphs with many levels and a sparse solution near the end.
+
 def bfs(graph, start):
     start_time = time.time()
     tracemalloc.start()
@@ -53,211 +61,215 @@ def calculate_cost(path, graph):
                 break
     return total_cost
 
-
-print("####################################################################################")
-print("####################################################################################")
-print("####################################################################################")
-print("City Number == 5")
 city_number = 5
 cities = CityGraph.generate_cities(city_number)
-
-# test bfs sym
 graph = CityGraph.create_complete_graph(cities, True)
 min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
-print("Completed Symmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
 
-# test bfs sym
-graph = CityGraph.create_complete_graph(cities, False)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
-print("Completed Asymmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
-
-#reduce 20% edge sym
-graph = CityGraph.create_complete_graph(cities, True)
-edge_list = CityGraph.graph_to_edge_list(graph)
-reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
-reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
-print("Reduced Symmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
-
-#reduce 20% edge asym
-graph = CityGraph.create_complete_graph(cities, False)
-edge_list = CityGraph.graph_to_edge_list(graph)
-reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
-reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
-print("Reduced Asymmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-
-print("####################################################################################")
-print("####################################################################################")
-print("####################################################################################")
-print("City Number == 10 ")
-city_number = 10
-cities = CityGraph.generate_cities(city_number)
-
-# test bfs sym
-graph = CityGraph.create_complete_graph(cities, True)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
-print("Completed Symmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
-
-# test bfs sym
-graph = CityGraph.create_complete_graph(cities, False)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
-print("Completed Asymmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
-
-#reduce 20% edge sym
-graph = CityGraph.create_complete_graph(cities, True)
-edge_list = CityGraph.graph_to_edge_list(graph)
-reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
-reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
-print("Reduced Symmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
-
-#reduce 20% edge asym
-graph = CityGraph.create_complete_graph(cities, False)
-edge_list = CityGraph.graph_to_edge_list(graph)
-reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
-reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
-print("Reduced Asymmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-
-print("####################################################################################")
-print("####################################################################################")
-print("####################################################################################")
-print("City Number == 15")
-city_number = 15
-cities = CityGraph.generate_cities(city_number)
-
-# test bfs sym
-graph = CityGraph.create_complete_graph(cities, True)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
-print("Completed Symmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
-
-# test bfs sym
-graph = CityGraph.create_complete_graph(cities, False)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
-print("Completed Asymmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
-
-#reduce 20% edge sym
-graph = CityGraph.create_complete_graph(cities, True)
-edge_list = CityGraph.graph_to_edge_list(graph)
-reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
-reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
-print("Reduced Symmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
-
-#reduce 20% edge asym
-graph = CityGraph.create_complete_graph(cities, False)
-edge_list = CityGraph.graph_to_edge_list(graph)
-reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
-reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
-print("Reduced Asymmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-
-print("####################################################################################")
-print("####################################################################################")
-print("####################################################################################")
-print("City Number == 20")
-city_number = 20
-cities = CityGraph.generate_cities(city_number)
-
-# test bfs sym
-graph = CityGraph.create_complete_graph(cities, True)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
-print("Completed Symmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
-
-# test bfs sym
-graph = CityGraph.create_complete_graph(cities, False)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
-print("Completed Asymmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
-
-#reduce 20% edge sym
-graph = CityGraph.create_complete_graph(cities, True)
-edge_list = CityGraph.graph_to_edge_list(graph)
-reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
-reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
-print("Reduced Symmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
-print("#######################################################################")
-
-#reduce 20% edge asym
-graph = CityGraph.create_complete_graph(cities, False)
-edge_list = CityGraph.graph_to_edge_list(graph)
-reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
-reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
-min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
-print("Reduced Asymmetric Graph")
-print("Minimum cost path:", min_cost_path)
-print("Minimum cost:", min_cost)
-print("Minimum peak_memory_consumption:", peak_memory_consumption)
-print("Minimum time_cost:", time_cost)
+# print("####################################################################################")
+# print("####################################################################################")
+# print("####################################################################################")
+# print("City Number == 5")
+# city_number = 5
+# cities = CityGraph.generate_cities(city_number)
+#
+# # test bfs sym
+# graph = CityGraph.create_complete_graph(cities, True)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
+# print("Completed Symmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# # test bfs sym
+# graph = CityGraph.create_complete_graph(cities, False)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
+# print("Completed Asymmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# #reduce 20% edge sym
+# graph = CityGraph.create_complete_graph(cities, True)
+# edge_list = CityGraph.graph_to_edge_list(graph)
+# reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
+# reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
+# print("Reduced Symmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# #reduce 20% edge asym
+# graph = CityGraph.create_complete_graph(cities, False)
+# edge_list = CityGraph.graph_to_edge_list(graph)
+# reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
+# reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
+# print("Reduced Asymmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+#
+# print("####################################################################################")
+# print("####################################################################################")
+# print("####################################################################################")
+# print("City Number == 10 ")
+# city_number = 10
+# cities = CityGraph.generate_cities(city_number)
+#
+# # test bfs sym
+# graph = CityGraph.create_complete_graph(cities, True)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
+# print("Completed Symmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# # test bfs sym
+# graph = CityGraph.create_complete_graph(cities, False)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
+# print("Completed Asymmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# #reduce 20% edge sym
+# graph = CityGraph.create_complete_graph(cities, True)
+# edge_list = CityGraph.graph_to_edge_list(graph)
+# reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
+# reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
+# print("Reduced Symmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# #reduce 20% edge asym
+# graph = CityGraph.create_complete_graph(cities, False)
+# edge_list = CityGraph.graph_to_edge_list(graph)
+# reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
+# reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
+# print("Reduced Asymmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+#
+# print("####################################################################################")
+# print("####################################################################################")
+# print("####################################################################################")
+# print("City Number == 15")
+# city_number = 15
+# cities = CityGraph.generate_cities(city_number)
+#
+# # test bfs sym
+# graph = CityGraph.create_complete_graph(cities, True)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
+# print("Completed Symmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# # test bfs sym
+# graph = CityGraph.create_complete_graph(cities, False)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
+# print("Completed Asymmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# #reduce 20% edge sym
+# graph = CityGraph.create_complete_graph(cities, True)
+# edge_list = CityGraph.graph_to_edge_list(graph)
+# reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
+# reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
+# print("Reduced Symmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# #reduce 20% edge asym
+# graph = CityGraph.create_complete_graph(cities, False)
+# edge_list = CityGraph.graph_to_edge_list(graph)
+# reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
+# reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
+# print("Reduced Asymmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+#
+# print("####################################################################################")
+# print("####################################################################################")
+# print("####################################################################################")
+# print("City Number == 20")
+# city_number = 20
+# cities = CityGraph.generate_cities(city_number)
+#
+# # test bfs sym
+# graph = CityGraph.create_complete_graph(cities, True)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
+# print("Completed Symmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# # test bfs sym
+# graph = CityGraph.create_complete_graph(cities, False)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(graph, 0)
+# print("Completed Asymmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# #reduce 20% edge sym
+# graph = CityGraph.create_complete_graph(cities, True)
+# edge_list = CityGraph.graph_to_edge_list(graph)
+# reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
+# reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
+# print("Reduced Symmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)
+# print("#######################################################################")
+#
+# #reduce 20% edge asym
+# graph = CityGraph.create_complete_graph(cities, False)
+# edge_list = CityGraph.graph_to_edge_list(graph)
+# reduced_edge_list = CityGraph.remove_20_percent_edges(edge_list)
+# reduced_graph = CityGraph.edge_list_to_graph(reduced_edge_list, city_number)
+# min_cost_path, min_cost, peak_memory_consumption, time_cost = bfs(reduced_graph, 0)
+# print("Reduced Asymmetric Graph")
+# print("Minimum cost path:", min_cost_path)
+# print("Minimum cost:", min_cost)
+# print("Minimum peak_memory_consumption:", peak_memory_consumption)
+# print("Minimum time_cost:", time_cost)

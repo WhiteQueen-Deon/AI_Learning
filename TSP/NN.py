@@ -1,6 +1,16 @@
 import time
 import tracemalloc
 import CityGraph
+
+##nearest neighbor
+# **Advantages**:
+# - Simple and easy to implement.
+# - Efficient for small-scale or sparse graphs.
+#
+# **Disadvantages**:
+# - **Local Optimum**: The greedy strategy might result in a solution that is not globally optimal.
+# - **Performance Limitations**: May struggle with complex optimization in dense or large-scale graphs.
+
 def calculate_cost(path, graph):
     cost = 0
     for i in range(len(path) - 1):
